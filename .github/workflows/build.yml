@@ -1,7 +1,10 @@
 name: Build Native
 on:
   workflow_dispatch:
-    inputs: {}
+    inputs:
+      sdl_ref:
+        description: SDL3 commit/branch/tag to build
+        required: true
 #  schedule:
 #    - cron: '0 0 * * *'
 env:
@@ -29,7 +32,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: 'libsdl-org/SDL'
-          ref: 'main'
+          ref: ${{ inputs.sdl_ref }}
 
       - uses: actions/checkout@v4
         with:
@@ -64,7 +67,7 @@ jobs:
           RUNNER_OS: ${{ runner.os }}
           FLAGS: ${{ matrix.platform.flags }}
         run: ./SDL3-CS/build.sh
-      
+
       - name: Get Actions user id
         if: runner.os == 'Linux'
         id: get_uid
@@ -94,7 +97,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: 'libsdl-org/SDL'
-          ref: 'main'
+          ref: ${{ inputs.sdl_ref }}
 
       - uses: actions/checkout@v4
         with:
@@ -137,7 +140,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: 'libsdl-org/SDL'
-          ref: 'main'
+          ref: ${{ inputs.sdl_ref }}
 
       - uses: actions/checkout@v4
         with:
