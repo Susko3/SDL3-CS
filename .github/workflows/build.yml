@@ -71,7 +71,7 @@ jobs:
           user_id: ${{ steps.get_uid.outputs.uid }}
 
       - name: Compress native directory
-        run: tar -cf native-${{ matrix.platform.name }}.tar native
+        run: tar -cf native-${{ matrix.platform.name }}.tar native/${{ matrix.platform.name }}
 
       - name: Upload native artifact
         uses: actions/upload-artifact@v4
@@ -105,7 +105,7 @@ jobs:
           cp External/SDL/Xcode/SDL/build/SDL3.xcframework/ios-arm64_x86_64-simulator/SDL3.framework/Info.plist native/ios/SDL3.xcframework/ios-arm64_x86_64-simulator/SDL3.framework/Info.plist;
 
       - name: Compress native directory
-        run: tar -cf native-ios.tar native
+        run: tar -cf native-ios.tar native/ios
 
       - name: Upload native artifact
         uses: actions/upload-artifact@v4
@@ -166,7 +166,7 @@ jobs:
           jar cvf $OUTPUT/SDL3AndroidBridge.jar org/libsdl/app/*.class
 
       - name: Compress native directory
-        run: tar -cf native-android.tar native
+        run: tar -cf native-android.tar native/android
 
       - name: Upload native artifact
         uses: actions/upload-artifact@v4
