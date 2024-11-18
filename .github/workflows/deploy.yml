@@ -28,8 +28,8 @@ jobs:
           name: SDL3-CS
           path: SDL3-CS/bin/Release/ppy.*.nupkg
 
-      - name: Publish tagged release to nuget.org
-        run: dotnet nuget push SDL3-CS/bin/Release/ppy.*.nupkg -s https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}}
+#      - name: Publish tagged release to nuget.org
+#        run: dotnet nuget push SDL3-CS/bin/Release/ppy.*.nupkg -s https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}}
 
   android:
     runs-on: windows-latest
@@ -56,5 +56,5 @@ jobs:
           name: SDL3-CS.Android
           path: SDL3-CS.Android\bin\Release\ppy.*.nupkg
 
-      - name: Publish tagged release to nuget.org
-        run: dotnet nuget push SDL3-CS.Android\bin\Release\ppy.*.nupkg -s https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}}
+#      - name: Publish tagged release to nuget.org
+#        run: dotnet nuget push SDL3-CS.Android\bin\Release\ppy.*.nupkg -s https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}}
